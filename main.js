@@ -13,9 +13,11 @@ window.onload = () => {
 }
 
 
-_("capture").addEventListener("click", () => {
+const capture = () => {
 
     _("capture").disabled = true;
+    _("webcam").style.display = "none";
+    _("canvas").style.display = "";
 
     const canvas = _("canvas");
     const context = canvas.getContext("2d");
@@ -31,8 +33,10 @@ _("capture").addEventListener("click", () => {
     context.drawImage(_("webcam"), startX, startY, 480, 480, 0, 0, canvas.width, canvas.height);
 
     send();
-});
+};
 
+_("capture").addEventListener("click", capture);
+window.addEventListener("keypress", e => e.code === "Space" && capture());
 
 const send = () => {
 
@@ -46,38 +50,42 @@ const send = () => {
     })
     .then(response => response.json())
     .then(result => {
-        
         renderTable(result);
-
-        _("capture").disabled = false;
+        restoreWebcam();
     })
     .catch((error) => {
         console.error("Error:", error);
-        _("capture").disabled = false;
+        restoreWebcam();
     });
 };
+
+const restoreWebcam = () => {
+    _("webcam").style.display = "";
+    _("canvas").style.display = "none";
+    _("capture").disabled = false;
+}
 
 
 const renderTable = (data) => {
 
     const sortedArray = Object.entries(data).sort((a, b) => b[1] - a[1]);
 
-    const tbody = document.createElement("tbody");
+    _("results").innerText = null;
 
-    sortedArray.forEach(([key, value]) => {
+    sortedArray.forEach(([key, value], i) => {
         const tr = document.createElement("tr");
-        const tdKey = document.createElement("td");
-        const tdValue = document.createElement("td");
 
-        tdKey.innerText = key;
-        tdValue.innerText = value;
+        if (i === 0) tr.classList.add("table-success");
 
-        tr.appendChild(tdKey);
-        tr.appendChild(tdValue);
-        tbody.appendChild(tr);
+        const td1 = document.createElement("td");
+        const td2 = document.createElement("td");
+
+        td1.innerText = key;
+        td2.innerText = value + "%";
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        _("results").appendChild(tr);
     });
-
-    _("results").appendChild(tbody);
 }
-
 

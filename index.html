@@ -8,28 +8,42 @@
 	<link rel="author" href="https://pesout.net">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	
-	<title>Webcam Capture Example</title>
+	<title>Digit Classifier</title>
 	
 	
 </head>
 <body>
 
-	<h1>Workshop 4</h1>
+	<header>
+		<h1>Digit Classifier</h1>
+	</header>
 
-	<div class="d-flex">
+	<div class="d-flex justify-content-center align-self-center">
 		<div>
 			<video id="webcam" width="640" height="480" autoplay></video>
 			<canvas id="canvas" width="480" height="480" style="display:none;"></canvas>
 			<br>
-			<button id="capture" class="btn btn-primary" style="width:480px">Capture photo</button>
+			<button id="capture" class="btn btn-dark" style="width:480px">Capture photo</button>
 		</div>
 		<div>
-			<table class="table table-striped" id="results">
+			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<td>Class</td><td>Predicted probability</td>
+						<td>Class (Number)</td><td>Predicted probability</td>
 					</tr>
 				</thead>
+				<tbody id="results">
+					<tr><td>Number 0</td><td>--- %</td></tr>
+					<tr><td>Number 1</td><td>--- %</td></tr>
+					<tr><td>Number 2</td><td>--- %</td></tr>
+					<tr><td>Number 3</td><td>--- %</td></tr>
+					<tr><td>Number 4</td><td>--- %</td></tr>
+					<tr><td>Number 5</td><td>--- %</td></tr>
+					<tr><td>Number 6</td><td>--- %</td></tr>
+					<tr><td>Number 7</td><td>--- %</td></tr>
+					<tr><td>Number 8</td><td>--- %</td></tr>
+					<tr><td>Number 9</td><td>--- %</td></tr>
+				</tbody>
 			</table>
 		</div>
 	</div>

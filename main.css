@@ -1,6 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+}
+
+header {
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
 #webcam {
     width: 480px;
     height: 480px;
     object-fit: cover;
     object-position: center;
+}
+
+.d-flex div {
+    margin: 20px;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+tbody td:last-child {
+    font-weight: bold;
+}
+
+tbody tr:first-child {
+    font-size: 25px;
 }
