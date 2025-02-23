@@ -1,17 +1,21 @@
 const _ = (id) => document.getElementById(id);
 
-
 window.onload = () => {
 
-    navigator.mediaDevices.getUserMedia({video: { width: { ideal: 640 }, height: { ideal: 480 }}})
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    const constraints = isMobile
+        ? { video: { facingMode: "environment" } }  // This uses the back camera on mobile
+        : { video: { width: { ideal: 640 }, height: { ideal: 480 } } };  // Default webcam settings for desktop
+
+    navigator.mediaDevices.getUserMedia(constraints)
         .then((stream) => {
             _("webcam").srcObject = stream;
         })
         .catch((error) => {
-            console.error("Error accessing the webcam", error);
+            console.error("Error accessing the camera", error);
         });
-}
-
+};
 
 const capture = () => {
 
@@ -64,7 +68,6 @@ const restoreWebcam = () => {
     _("canvas").style.display = "none";
     _("capture").disabled = false;
 }
-
 
 const renderTable = (data) => {
 

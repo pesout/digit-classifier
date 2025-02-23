@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import requests
 import json
@@ -10,7 +11,8 @@ from tensorflow.keras.models import load_model
 model = load_model("saved_network.h5")
 
 # URL of the PNG image
-image_url = "http://localhost/image-classify/uploads/photo.png"
+filename = sys.argv[1];
+image_url = f"http://localhost/image-classify/uploads/{filename}"
 
 # Download the image
 response = requests.get(image_url)

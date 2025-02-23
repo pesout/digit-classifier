@@ -4,32 +4,31 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="main.css?a=1">
 	<link rel="author" href="https://pesout.net">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	
 	<title>Digit Classifier</title>
 	
-	
 </head>
 <body>
 
-	<header>
+	<header class="text-center my-4 my-lg-5">
 		<h1>Digit Classifier</h1>
 	</header>
 
-	<div class="d-flex justify-content-center align-self-center">
-		<div>
+	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start pb-2">
+		<div class="d-flex flex-column justify-content-center align-items-center">
 			<video id="webcam" width="640" height="480" autoplay></video>
 			<canvas id="canvas" width="480" height="480" style="display:none;"></canvas>
 			<br>
-			<button id="capture" class="btn btn-dark" style="width:480px">Capture photo</button>
+			<button id="capture" class="btn btn-dark mt-2">Capture photo</button>
 		</div>
-		<div>
-			<table class="table table-hover table-bordered">
+		<div class="table-container">
+			<table class="table table-hover table-bordered mt-3 mt-lg-0 ms-lg-2 ms-xl-4">
 				<thead>
 					<tr>
-						<td>Class (Number)</td><td>Predicted probability</td>
+						<td><strong>Class (Number)</strong></td><td><strong>Predicted probability</strong></td>
 					</tr>
 				</thead>
 				<tbody id="results">
@@ -48,6 +47,6 @@
 		</div>
 	</div>
     
-	<script src="main.js"></script>
+	<script src="main.js?a=2"></script>
 </body>
 </html>
